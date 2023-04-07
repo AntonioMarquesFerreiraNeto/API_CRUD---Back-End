@@ -6,6 +6,8 @@ namespace API_CRUD_FROTA.Models {
 
         public int Id { get; set; }
 
+        public int? MotoristaId { get; set; }
+
         [Required (ErrorMessage = "Campo obrigatório!")]
         public string? Modelo { get; set; }
 
@@ -26,6 +28,8 @@ namespace API_CRUD_FROTA.Models {
 
         [Required(ErrorMessage = "Campo obrigatório!")]
         public CorBus Cor { get; set; }
+
+        public virtual Motorista? Motorista { get; set; }
 
         public string? ReturnCorBus() {
             if (Cor == CorBus.Branco) {

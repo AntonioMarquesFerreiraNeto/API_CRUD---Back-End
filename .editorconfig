@@ -64,6 +64,9 @@ csharp_style_prefer_pattern_matching = true:silent
 csharp_space_around_binary_operators = before_and_after
 csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
 
+# CS8602: Desreferência de uma referência possivelmente nula.
+dotnet_diagnostic.CS8602.severity = none
+
 [*.vb]
 #### Estilos de nomenclatura ####
 

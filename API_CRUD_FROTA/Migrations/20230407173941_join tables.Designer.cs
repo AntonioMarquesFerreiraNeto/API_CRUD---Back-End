@@ -3,6 +3,7 @@ using System;
 using API_CRUD_FROTA.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_CRUD_FROTA.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    partial class BancoContextModelSnapshot : ModelSnapshot
+    [Migration("20230407173941_join tables")]
+    partial class jointables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -80,6 +82,9 @@ namespace API_CRUD_FROTA.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<int?>("MotoristaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("OnibusId")
                         .HasColumnType("int");
 
                     b.Property<string>("Placa")

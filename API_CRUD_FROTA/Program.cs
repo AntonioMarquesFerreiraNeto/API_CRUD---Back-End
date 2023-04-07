@@ -1,8 +1,10 @@
 using API_CRUD_FROTA.Data;
 using API_CRUD_FROTA.Repository;
+using FluentAssertions.Common;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using System.Security.Cryptography.X509Certificates;
+using System.Text.Json.Serialization;
 
 namespace API_CRUD_FROTA {
     public class Program {
@@ -21,7 +23,11 @@ namespace API_CRUD_FROTA {
                 options => options.UseMySql(conenectionString, ServerVersion.Parse("8.1.32")) //Detalhe, neste local é inserido a versão do seu server. 
                 );
             builder.Services.AddScoped<IOnibusRepository, OnibusRepository>();
-
+            builder.Services.AddScoped<IMotoristaRepository, MotoristaRepository>();
+            
+            //Para evitar problemas envolvendo ciclos nos relacionamentos usando o Entity.
+            builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             var app = builder.Build();
 

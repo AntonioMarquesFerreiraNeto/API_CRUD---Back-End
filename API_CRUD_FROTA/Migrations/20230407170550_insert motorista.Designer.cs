@@ -3,6 +3,7 @@ using System;
 using API_CRUD_FROTA.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_CRUD_FROTA.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    partial class BancoContextModelSnapshot : ModelSnapshot
+    [Migration("20230407170550_insert motorista")]
+    partial class insertmotorista
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,9 +81,6 @@ namespace API_CRUD_FROTA.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("MotoristaId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Placa")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -92,23 +91,7 @@ namespace API_CRUD_FROTA.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MotoristaId");
-
                     b.ToTable("Onibus");
-                });
-
-            modelBuilder.Entity("API_CRUD_FROTA.Models.Onibus", b =>
-                {
-                    b.HasOne("API_CRUD_FROTA.Models.Motorista", "Motorista")
-                        .WithMany("Onibus")
-                        .HasForeignKey("MotoristaId");
-
-                    b.Navigation("Motorista");
-                });
-
-            modelBuilder.Entity("API_CRUD_FROTA.Models.Motorista", b =>
-                {
-                    b.Navigation("Onibus");
                 });
 #pragma warning restore 612, 618
         }

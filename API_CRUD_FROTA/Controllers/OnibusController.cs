@@ -62,11 +62,11 @@ namespace API_CRUD_FROTA.Controllers {
             }
         }
 
-        [HttpDelete ("{id}")]
+        [HttpDelete("{id}")]
         public IActionResult DeleteOnibus(int id) {
             try {
                 _onibusRepository.Delete(id);
-                return Ok($"Ônibus nº {id}, deletado com sucesso!");
+                return Ok($"Ônibus n.º {id} deletado com sucesso!");
             }
             catch (Exception error) {
                 return NotFound(error.Message);
